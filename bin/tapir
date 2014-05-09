@@ -4,4 +4,4 @@
 require('coffee-script/register');
 var cli = require(__dirname + '/../lib/cli');
 
-cli(process.args)
+cli(process.argv);
