@@ -14,7 +14,11 @@ connect = (host, port) ->
     client = new net.Socket()
 
     request = (url) ->
-        client.write "GET #{url}\r\n"
+        debug(url)
+        client.write "GET #{url} HTTP/1.1\r\n"
+        client.write "User-Agent: tapir/1.0.0\r\n"
+        client.write "Host: #{host}\r\n"
+        client.write "Accept: */*\r\n"
         client.write "\r\n"
 
     listen = (topic, onEvent) ->
@@ -23,6 +27,7 @@ connect = (host, port) ->
             request "/listen/#{topic}"
 
         client.on 'data', (data) ->
+            debug(data)
             if first
                 response = parseResponse(data.toString())
             else
@@ -42,6 +47,7 @@ connect = (host, port) ->
             request "/send/#{topic}/#{message}"
 
         client.on 'data', (data) ->
+            debug(data)
             response = parseResponse(data.toString())
             debug(response)
             client.end()
