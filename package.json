@@ -1,12 +1,17 @@
 {
   "name": "tapir",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "tapir manages the ping-pong workflow across machines.",
+  "repository" : {
+      "type" : "git",
+      "url" : "https://github.com/andersjanmyr/tapir.git"
+  },
   "main": "lib/tapir.js",
+  "bin": "bin/tapir",
   "scripts": {
     "start": "node server.js",
     "test": "mocha test",
-    "watch": "nodemon --ext coffee --ignore bin server.js"
+    "watch": "nodemon --ext coffee --ext js --ignore bin server.js"
   },
   "keywords": [
     "ping-pong",
