@@ -1,4 +1,3 @@
-MultiMap = require 'collections/multi-map'
 
 topicClients = {}
 
