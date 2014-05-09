@@ -13,13 +13,16 @@ trim = (str) ->
 connect = (host, port) ->
     client = new net.Socket()
 
+    writeHeader = (text) ->
+        client.write "#{text}\r\n"
+
     request = (url) ->
         debug(url)
-        client.write "GET #{url} HTTP/1.1\r\n"
-        client.write "User-Agent: tapir/1.0.0\r\n"
-        client.write "Host: #{host}\r\n"
-        client.write "Accept: */*\r\n"
-        client.write "\r\n"
+        writeHeader "GET #{url} HTTP/1.1"
+        writeHeader "User-Agent: tapir/1.0.0"
+        writeHeader "Host: #{host}"
+        writeHeader "Accept: */*"
+        writeHeader ""
 
     listen = (topic, onEvent) ->
         first = true
