@@ -4,12 +4,21 @@
   "description": "tapir manages the ping-pong workflow across machines.",
   "main": "lib/tapir.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "watch": "nodemon --ext coffee --ignore bin server.js"
   },
   "keywords": [
     "ping-pong",
     "test"
   ],
   "author": "Anders Janmyr <anders@janmyr.com> (http://anders.janmyr.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.7.1",
+    "express": "^4.1.1",
+    "server-event": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.0.17"
+  }
 }
