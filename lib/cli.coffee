@@ -18,8 +18,8 @@ usage = ->
 
 main = (argv) ->
     args = parseArgs(argv.slice(2))
-    port =  args.port or 3000
-    host = args.host or 'localhost'
+    host = args.host or 'tapir-server.herokuapp.com'
+    port =  args.port or 80
     cmd = args.cmd or 'send'
     script = args.script
     topic = args._[0] or 'topic'
