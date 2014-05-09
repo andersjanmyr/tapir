@@ -13,11 +13,14 @@ trim = (str) ->
 connect = (host, port) ->
     client = new net.Socket()
 
+    request = (url) ->
+        client.write "GET #{url}\r\n"
+        client.write "\r\n"
+
     listen = (topic, onEvent) ->
         first = true
         client.connect port, host, ->
-            client.write "GET /listen/#{topic}\n"
-            client.write "\n"
+            request "/listen/#{topic}"
 
         client.on 'data', (data) ->
             if first
@@ -36,12 +39,12 @@ connect = (host, port) ->
 
     send = (topic, message) ->
         client.connect port, host, ->
-            client.write "GET /send/#{topic}/#{message}\n"
-            client.write "\n"
+            request "/send/#{topic}/#{message}"
 
         client.on 'data', (data) ->
             response = parseResponse(data.toString())
-            debug(response);
+            debug(response)
+            client.end()
 
         client.on 'close', ->
             debug('Connection closed')
