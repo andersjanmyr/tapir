@@ -9,11 +9,13 @@ process.on 'uncaughtException', (error) ->
 
 usage = ->
     console.log """
-    Usage: tapir [options] <topic> [message]
-    --host: The host, default: tapir-server.herokuapp.com
-    --port: The port, default: 80
-    --cmd: Command (send or listen), default: send
-    --help: Prints this message
+    Usage: tapir [options] [topic] [message]
+        --host: The host, default: tapir-server.herokuapp.com
+        --port: The port, default: 80
+        --cmd: Command (send or listen), default: send
+        --help: Prints this message
+        topic: The topic you are interested int, defaults: topic
+        message: The message, defaults: ping
     """
 
 main = (argv) ->
