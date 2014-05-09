@@ -5,7 +5,6 @@ serverEvent = require('server-event')()
 topics = require('./topics')
 
 broadcast = (topic, message) ->
-    console.log(topics.clients(topic))
     topics.clients(topic).forEach (client) ->
         client.sse(message)
 
@@ -14,8 +13,7 @@ app.get '/listen/:topic', serverEvent, (req, res) ->
     console.log('listen', topic)
 
     topics.register(topic, res)
-    res.sse('test', "event with name test")
-    res.sse('default event name message')
+    res.sse(topic, 'Hola senor!')
 
 app.use(express.static(__dirname + '/public'));
 

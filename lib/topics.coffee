@@ -5,7 +5,7 @@ topicClients = {}
 register = (topic, client) ->
     topicClients[topic] = topicClients[topic] or []
     topicClients[topic].push client
-    console.log "Registering client: #{client.params}"
+    console.log "Registering client: #{topic}"
 
 deregister = (topic, client) ->
     topicClients.delete(topic, client)
