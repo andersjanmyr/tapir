@@ -4,6 +4,7 @@
   "description": "tapir manages the ping-pong workflow across machines.",
   "main": "lib/tapir.js",
   "scripts": {
+    "start": "node server.js",
     "test": "mocha test",
     "watch": "nodemon --ext coffee --ignore bin server.js"
   },
@@ -16,6 +17,7 @@
   "dependencies": {
     "coffee-script": "^1.7.1",
     "express": "^4.1.1",
+    "minimist": "0.0.9",
     "server-event": "^1.0.1"
   },
   "devDependencies": {
