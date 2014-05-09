@@ -27,7 +27,7 @@ connect = (host, port) ->
     listen = (topic, onEvent) ->
         first = true
         client.connect port, host, ->
-            request "/listen/#{topic}"
+            request "/listen/#{encodeURIComponent(topic)}"
 
         client.on 'data', (data) ->
             debug(data)
@@ -47,7 +47,7 @@ connect = (host, port) ->
 
     send = (topic, message) ->
         client.connect port, host, ->
-            request "/send/#{topic}/#{message}"
+            request "/send/#{encodeURIComponent(topic)}/#{encodeURIComponent(message)}"
 
         client.on 'data', (data) ->
             debug(data)
