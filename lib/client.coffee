@@ -5,7 +5,7 @@ net = require 'net'
 connect = (host, port) ->
     client = new net.Socket()
 
-    listen = (host, port, topic) ->
+    listen = (topic) ->
         client.connect port, host, ->
             client.write "GET /listen/#{topic}\n"
             client.write "\n"
@@ -16,7 +16,7 @@ connect = (host, port) ->
         client.on 'close', ->
             console.log('Connection closed')
 
-    send = (host, port, topic, message) ->
+    send = (topic, message) ->
         client.connect port, host, ->
             client.write "GET /listen/#{topic}\n"
             client.write "\n"
@@ -28,8 +28,7 @@ connect = (host, port) ->
             console.log('Connection closed')
 
     # Main
-    client.connect port, host, ->
-        { listen: listen, send: send }
+    return { listen: listen, send: send }
 
 
 module.exports = connect
