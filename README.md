@@ -1,7 +1,7 @@
 ## Tapir
 
 Tapir is a messaging application meant to be used for synchronizing tasks
-across machines. It consists of a client and a server.
+across machines. It uses [Server Sent Events](https://developer.mozilla.org/en-US/docs/Server-sent_events/Using_server-sent_events) as the message protocol.
 
 ## Installation
 
