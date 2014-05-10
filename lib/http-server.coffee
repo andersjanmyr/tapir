@@ -14,13 +14,14 @@ register = (topic, client) ->
     client.on 'close', ->
         topics.deregister(topic, client)
 
+app.use(express.static("#{__dirname}/../public"))
+
 app.get '/listen/:topic', serverEvent, (req, res) ->
     debug('listen', req.params)
     topic = req.params.topic
     register(topic, res)
     res.sse(topic, 'Hola senor!')
 
-app.use(express.static(__dirname + '/public'));
 
 app.get '/send/:topic/:message', (req, res) ->
     debug('send', req.params)
