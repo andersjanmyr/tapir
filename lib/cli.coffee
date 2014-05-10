@@ -1,4 +1,4 @@
-debug = require('debug')('tapir')
+debug = require('debug')('tapir:cli')
 parseArgs = require 'minimist'
 exec = require('child_process').exec
 Client = require './client'

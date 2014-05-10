@@ -1,5 +1,5 @@
 net = require 'net'
-debug = require('debug')('tapir')
+debug = require('debug')('tapir:client')
 
 parseResponse = (data) ->
     trim(data.split('\r\n\r\n')[1])
