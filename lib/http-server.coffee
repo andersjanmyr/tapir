@@ -1,3 +1,4 @@
+debug = require('debug')('tapir:http-server')
 express = require 'express'
 
 app = express()
@@ -8,20 +9,23 @@ broadcast = (topic, message) ->
     topics.clients(topic).forEach (client) ->
         client.sse(message)
 
-app.get '/listen/:topic', serverEvent, (req, res) ->
-    topic = req.params.topic
-    console.log('listen', topic)
+register = (topic, client) ->
+    topics.register(topic, client)
+    client.on 'close', ->
+        topics.deregister(topic, client)
 
-    topics.register(topic, res)
+app.get '/listen/:topic', serverEvent, (req, res) ->
+    debug('listen', req.params)
+    topic = req.params.topic
+    register(topic, res)
     res.sse(topic, 'Hola senor!')
 
 app.use(express.static(__dirname + '/public'));
 
 app.get '/send/:topic/:message', (req, res) ->
-    console.log('send', req.params)
+    debug('send', req.params)
     topic = req.params.topic
     message = req.params.message
-    console.log('send', topic, message)
     res.send "Message #{message}, sent to topic #{topic}\n"
     broadcast(topic, message)
 

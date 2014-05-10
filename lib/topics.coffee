@@ -1,13 +1,17 @@
+debug = require('debug')('tapir:topics')
 
 topicClients = {}
 
 register = (topic, client) ->
+    debug "Registering client: #{topic}"
     topicClients[topic] = topicClients[topic] or []
     topicClients[topic].push client
-    console.log "Registering client: #{topic}"
 
 deregister = (topic, client) ->
-    topicClients.delete(topic, client)
+    debug "Deregistering client: #{topic}"
+    clients = topicClients[topic]
+    clients.splice(clients.indexOf(client), 1)
+    debug clients.length
 
 clients = (topic) ->
     topicClients[topic] or []
