@@ -1,0 +1,63 @@
+<html>
+<head>
+</head>
+<body>
+<a href="https://github.com/andersjanmyr/tapir"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h2>
+<a name="user-content-tapir" class="anchor" href="#tapir"><span class="octicon octicon-link"></span></a>Tapir</h2>
+
+<p>Tapir is a messaging application meant to be used for synchronizing tasks
+across machines. It consists of a client and a server.</p>
+
+<p>
+Read more at the <a href="https://github.com/andersjanmyr/tapir">Github repo</a>
+</p>
+
+<h2>
+<a name="user-content-client" class="anchor" href="#client"><span
+    class="octicon octicon-link"></span></a>Installation</h2>
+    <p>Install with <code>npm</code></p>
+<pre><code>
+  npm install -g tapir
+</code></pre>
+
+<h2>
+<a name="user-content-client" class="anchor" href="#client"><span class="octicon octicon-link"></span></a>Client</h2>
+
+<p>The client handles two commands (<code>--cmd</code>), <code>send</code> and <code>listen</code>. If you listen
+for a topic you will be notified every time a message is sent to your topic.</p>
+
+<h3>
+<a name="user-content-tapir---cmd-listen" class="anchor" href="#tapir---cmd-listen"><span class="octicon octicon-link"></span></a><code>tapir --cmd listen</code>
+</h3>
+
+<pre><code># Open a connection to the server that listens for `send`s on the topic
+# .../roman-numerals-kata, run git pull when a message arrives
+tapir --cmd listen 'https://github.com/andersjanmyr/roman-numerals-kata' \
+  --script 'git pull'
+</code></pre>
+
+<h3>
+<a name="user-content-tapir---cmd-send" class="anchor" href="#tapir---cmd-send"><span class="octicon octicon-link"></span></a><code>tapir --cmd send</code>
+</h3>
+
+<pre><code># Send a message (ping) to the topic .../roman-numerals-kata
+# tapir --cmd defaults to send so there is no need to write --cmd send
+tapir 'https://github.com/andersjanmyr/roman-numerals-kata'
+</code></pre>
+
+<h3>
+<a name="user-content-tapir---help" class="anchor" href="#tapir---help"><span class="octicon octicon-link"></span></a><code>tapir --help</code>
+</h3>
+
+<pre><code>Usage: tapir [options] [topic] [message]
+  --host: The host, default: tapir-server.herokuapp.com
+  --port: The port, default: 80
+  --cmd: Command (send or listen), default: send
+  --help: Prints this message
+  topic: The topic you are interested int, defaults: topic
+  message: The message, defaults: ping
+</code></pre>
+
+</body>
+</html>

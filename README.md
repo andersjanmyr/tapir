@@ -3,6 +3,13 @@
 Tapir is a messaging application meant to be used for synchronizing tasks
 across machines. It consists of a client and a server.
 
+## Installation
+
+Install with `npm`
+```
+npm install -g tapir
+```
+
 ## Client
 
 The client handles two commands (`--cmd`), `send` and `listen`. If you listen
