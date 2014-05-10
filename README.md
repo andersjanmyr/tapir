@@ -7,7 +7,7 @@ across machines. It uses [Server Sent Events](https://developer.mozilla.org/en-U
 
 Install with `npm`
 ```
-npm install -g tapir
+npm install -g node-tapir
 ```
 
 ## Client
