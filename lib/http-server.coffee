@@ -20,7 +20,7 @@ app.get '/listen/:topic', serverEvent, (req, res) ->
     debug('listen', req.params)
     topic = req.params.topic
     register(topic, res)
-    res.sse(topic, 'Hola senor!')
+    res.sse(topic, "Connected to /listen/#{topic}")
 
 
 app.get '/send/:topic/:message', (req, res) ->
