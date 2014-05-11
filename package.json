@@ -6,7 +6,9 @@
       "type" : "git",
       "url" : "https://github.com/andersjanmyr/tapir.git"
   },
-  "bin": "bin/tapir",
+  "bin": {
+      "tapir": "bin/tapir"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "mocha test",
