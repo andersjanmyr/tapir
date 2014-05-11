@@ -36,12 +36,14 @@ tapir 'https://github.com/andersjanmyr/roman-numerals-kata'
 
 ```
 Usage: tapir [options] [topic] [message]
-  --host: The host, default: tapir-server.herokuapp.com
-  --port: The port, default: 80
-  --cmd: Command (send or listen), default: send
-  --help: Prints this message
-  topic: The topic you are interested int, defaults: topic
-  message: The message, defaults: ping
+   --host: The host, default: tapir-server.herokuapp.com
+    --port: The port, default: 80
+    --cmd: Command (send or listen), default: send
+    --help: Prints this message
+    --script: Run this command when a message arrives
+    --verbose: Log some output
+    topic: The topic you are interested int, defaults: topic
+    message: The message, defaults: ping  --host: The host, default: tapir-server.herokuapp.com
 ```
 
 ### Accessing a local server
